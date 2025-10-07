@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Clients\Sms\Providers;
+namespace Coolycow\LaravelSms;
 
-use App\Clients\Sms\Contracts\SmsClientInterface;
-use App\Clients\Sms\Contracts\SmsConfigInterface;
-use App\Clients\Sms\Contracts\SmsExceptionInterface;
-use App\Clients\Sms\Exceptions\SmsException;
-use App\Clients\Sms\Services\SmsConfigService;
-use App\Clients\Sms\SmsClient;
+use Coolycow\LaravelSms\Contracts\SmsConfigInterface;
+use Coolycow\LaravelSms\Contracts\SmsClientInterface;
+use Coolycow\LaravelSms\Contracts\SmsExceptionInterface;
+use Coolycow\LaravelSms\Exceptions\SmsException;
+use Coolycow\LaravelSms\Services\SmsConfigService;
+use Coolycow\LaravelSms\SmsClient;
 use Illuminate\Support\ServiceProvider;
 
 class SmsServiceProvider extends ServiceProvider

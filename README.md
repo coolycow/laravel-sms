@@ -14,6 +14,8 @@ php artisan vendor:publish --provider="Coolycow\LaravelSms\SmsServiceProvider" -
 Необходимо указать конкретный класс, который отвечает за SMS, а также привязать провайдеров SMS.  
 Создаём свой Service Provider со следующим содержимым (название может быть другим):
 ```php
+<?php
+
 namespace App\Providers;
 
 use App\Clients\Sms\Contracts\SmsMessageInterface;

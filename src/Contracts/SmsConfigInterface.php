@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Clients\Sms\Contracts;
+namespace Coolycow\LaravelSms\Contracts;
 
 interface SmsConfigInterface
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Clients\Sms\Contracts;
+namespace Coolycow\LaravelSms\Contracts;
 
-use App\Clients\Sms\Enum\SmsStatusEnum;
+use Coolycow\LaravelSms\Enum\SmsStatusEnum;
 use Carbon\Carbon;
 
 interface SmsMessageInterface

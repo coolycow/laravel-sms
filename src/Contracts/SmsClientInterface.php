@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Clients\Sms\Contracts;
+namespace Coolycow\LaravelSms\Contracts;
 
-use App\Clients\Sms\DTO\SmsDTO;
-use App\Clients\Sms\Enum\SmsStatusEnum;
-use App\Clients\Sms\Exceptions\SmsException;
+use Coolycow\LaravelSms\DTO\SmsDTO;
+use Coolycow\LaravelSms\Enum\SmsStatusEnum;
+use Coolycow\LaravelSms\Exceptions\SmsException;
 
 interface SmsClientInterface
 {

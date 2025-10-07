@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Clients\Sms\Services;
+namespace Coolycow\LaravelSms\Services;
 
-use App\Clients\Sms\Contracts\SmsConfigInterface;
+use Coolycow\LaravelSms\Contracts\SmsConfigInterface;
 
 class SmsConfigService implements SmsConfigInterface
 {

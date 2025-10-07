@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Clients\Sms\Enum;
+namespace Coolycow\LaravelSms\Enum;
 
 enum SmsStatusEnum: int
 {

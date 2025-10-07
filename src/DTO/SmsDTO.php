@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Clients\Sms\DTO;
+namespace Coolycow\LaravelSms\DTO;
 
 /**
  * Используется в SmsClientInterface (метод sendSmsDTO) и в SmsProviderInterface (метод sendSms).

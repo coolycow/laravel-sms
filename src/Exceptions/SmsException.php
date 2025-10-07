@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Clients\Sms\Exceptions;
+namespace Coolycow\LaravelSms\Exceptions;
 
-use App\Clients\Sms\Contracts\SmsExceptionInterface;
+use Coolycow\LaravelSms\Contracts\SmsExceptionInterface;
 use Exception;
 
 class SmsException extends Exception implements SmsExceptionInterface
