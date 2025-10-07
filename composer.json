@@ -1,6 +1,6 @@
 {
     "name": "coolycow/laravel-sms",
-    "description": "Laravel package fot sms",
+    "description": "Laravel package for sms",
     "keywords": ["laravel", "sms", "notification"],
     "type": "package",
     "license": "MIT",
@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Coolycow\\LanguageTypos\\": "src/"
+            "Coolycow\\LaravelSms\\": "src/"
         }
     },
     "extra": {

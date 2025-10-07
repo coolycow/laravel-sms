@@ -1,6 +1,6 @@
 <?php
 
-namespace Coolycow\LaravelSms\Sms;
+namespace Coolycow\LaravelSms;
 
 use Coolycow\LaravelSms\DTO\SmsDTO;
 use Coolycow\LaravelSms\Enum\SmsStatusEnum;
