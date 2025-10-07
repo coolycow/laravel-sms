@@ -1,0 +1,30 @@
+{
+    "name": "coolycow/laravel-sms",
+    "description": "Laravel package fot sms",
+    "keywords": ["laravel", "sms", "notification"],
+    "type": "package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Maxim Kulikov",
+            "email": "coolycow.com@gmail.com",
+            "homepage": "https://coolycow.com"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "illuminate/support": "^10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Coolycow\\LanguageTypos\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Coolycow\\LaravelSms\\SmsServiceProvider"
+            ]
+        }
+    }
+}
