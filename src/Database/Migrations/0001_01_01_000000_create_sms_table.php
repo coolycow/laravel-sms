@@ -14,7 +14,7 @@ class CreateSmsTable extends Migration
      */
     public function up(): void
     {
-        if (Schema::hasTable('sms')) {
+        if (!Schema::hasTable('sms')) {
             Schema::create('sms', function (Blueprint $table) {
                 $table->id();
 
