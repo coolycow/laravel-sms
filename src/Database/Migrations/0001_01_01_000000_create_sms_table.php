@@ -26,7 +26,7 @@ return new class extends Migration
 
                 $table->unsignedBigInteger('provider_id')->nullable()->index();
 
-                $table->unsignedBigInteger('status_id')->nullable(false);
+                $table->string('status')->nullable(false)->index();
                 $table->text('status_text')->nullable(false);
 
                 $table->longText('response')->nullable();

@@ -32,7 +32,7 @@ interface SmsMessageInterface
      *
      * @return SmsStatusEnum
      */
-    public function getStatusId(): SmsStatusEnum;
+    public function getStatus(): SmsStatusEnum;
 
     /**
      * Установка статуса сообщения.
@@ -40,7 +40,7 @@ interface SmsMessageInterface
      * @param  SmsStatusEnum  $status
      * @return $this
      */
-    public function setStatusId(SmsStatusEnum $status): static;
+    public function setStatus(SmsStatusEnum $status): static;
 
     /**
      * Установить ответ провайдера.

@@ -83,7 +83,7 @@ class SmsClient implements SmsClientInterface
         // Если отключена отправка СМС, то сохраняем сообщение в статусе блокировки.
         if (!$this->config->sendIsEnabled()) {
             // Записываем статус и искусственный ответ в сообщение, которое надо было отправить.
-            $smsMessage->setStatusId(SmsStatusEnum::DISABLED)->setResponse([
+            $smsMessage->setStatus(SmsStatusEnum::DISABLED)->setResponse([
                 'msg' => 'Отправка СМС отключена в настройках сервиса.'
             ])->saveMessage();
 
@@ -105,12 +105,12 @@ class SmsClient implements SmsClientInterface
 
         // Записываем статус в сообщение, которое надо было отправить.
         if ($errorCode !== 0) {
-            $smsMessage->setStatusId(
+            $smsMessage->setStatus(
                 SmsStatusEnum::tryFrom($errorCode) ?? SmsStatusEnum::ERROR,
                 $this->provider->getErrorTextFromResponse($response)
             );
         } else {
-            $smsMessage->setStatusId(SmsStatusEnum::QUEUED)
+            $smsMessage->setStatus(SmsStatusEnum::QUEUED)
                 ->setProviderId($this->provider->getProviderIdFromResponse($response));
         }
 

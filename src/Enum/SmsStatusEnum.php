@@ -2,52 +2,52 @@
 
 namespace Coolycow\LaravelSms\Enum;
 
-enum SmsStatusEnum: int
+enum SmsStatusEnum: string
 {
     // Сообщение отправляется. Это промежуточный статус.
-    case QUEUED = -1;
+    case QUEUED = 'queued';
 
     // Сообщение доставлено в SMSC. Промежуточный статус.
-    case SMSC_SUBMIT = 0;
+    case SMSC_SUBMIT = 'sms_submit';
 
     // Сообщение доставлено абоненту. Это конечный статус.
-    case DELIVERED = 1;
+    case DELIVERED = 'delivered';
 
     // Сообщение не доставлено абоненту. Это конечный статус.
-    case NOT_DELIVERED = 2;
+    case NOT_DELIVERED = 'not_delivered';
 
     // Не доставлено в SMSC. Это конечный статус.
-    case SMSC_DELIVERY_ERROR = 16;
+    case SMSC_DELIVERY_ERROR = 'smsc_delivery_error';
 
     // Сообщение отвергнуто SMSC (номер заблокирован или не существует). Это конечный статус.
-    case SMSC_REJECT_ERROR = 17;
+    case SMSC_REJECT_ERROR = 'smsc_reject_error';
 
     // Сообщение не доставлено абоненту, срок "жизни" СМС истек. Это конечный статус.
-    case DELIVERY_ERROR = 34;
+    case DELIVERY_ERROR = 'delivery_error';
 
     // Ошибка в ответе. Это конечный статус.
-    case RESPONSE_ERROR = 248;
+    case RESPONSE_ERROR = 'response_error';
 
     // Неизвестная ошибка. Это конечный статус.
-    case UNKNOWN_ERROR = 249;
+    case UNKNOWN_ERROR = 'unknown_error';
 
     // Проверка заблокирована. Это конечный статус.
-    case DISABLED = 250;
+    case DISABLED = 'disabled';
 
     // Проверка заблокирована. Это конечный статус.
-    case BLOCKED = 251;
+    case BLOCKED = 'blocked';
 
     // Неизвестный ID. Это конечный статус.
-    case UNKNOWN_ID = 252;
+    case UNKNOWN_ID = 'unknown_id';
 
     // Неизвестный статус. Это конечный статус.
-    case UNKNOWN_STATUS = 253;
+    case UNKNOWN_STATUS = 'unknown_status';
 
     // Общая ошибка. Это конечный статус.
-    case ERROR = 254;
+    case ERROR = 'error';
 
     // Неизвестный провайдер. Это конечный статус.
-    case UNKNOWN_PROVIDER = 255;
+    case UNKNOWN_PROVIDER = 'unknown_provider';
 
     public function label(): string
     {
