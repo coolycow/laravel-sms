@@ -91,6 +91,6 @@ enum SmsStatusEnum: string
      */
     public static function getIntermediateStatuses(): array
     {
-        return [self::SMSC_SUBMIT];
+        return [self::QUEUED, self::SMSC_SUBMIT];
     }
 }
