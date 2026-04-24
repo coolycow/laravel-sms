@@ -83,6 +83,8 @@ class SmsConfigService implements SmsConfigInterface
      */
     public function getPrefix(): string
     {
-        return config('settings.sms_prefix', '');
+        $prefix = config('settings.sms_prefix', '');
+
+        return $prefix === null ? '' : (string) $prefix;
     }
 }
