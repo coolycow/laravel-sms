@@ -2,7 +2,7 @@
 
 ## 2.0.0
 
-Breaking-переписывание под Laravel 11/12/13 и PHP 8.2+.
+Breaking-переписывание под Laravel 12/13 и PHP 8.2+.
 
 - Самодостаточный конфиг `sms.*` (без привязки к `settings.*`).
 - Eloquent-модель `Sms` по умолчанию, реализующая `SmsMessageInterface`.
@@ -14,3 +14,4 @@ Breaking-переписывание под Laravel 11/12/13 и PHP 8.2+.
 - Добавлены фасад `Sms` и канал Laravel Notification `sms`.
 - Добавлены тесты, PHPStan, Pint и GitHub Actions CI.
 - Поддержка Laravel 13 и PHP 8.5.
+- Laravel 11 убран: security support закончился, Packagist блокирует уязвимые `illuminate/*` 11.x.

@@ -5,6 +5,7 @@ namespace Coolycow\LaravelSms\Facades;
 use Coolycow\LaravelSms\Contracts\SmsClientInterface;
 use Coolycow\LaravelSms\Contracts\SmsMessageInterface;
 use Coolycow\LaravelSms\Contracts\SmsProviderInterface;
+use Coolycow\LaravelSms\SmsClient;
 use Illuminate\Support\Facades\Facade;
 
 /**
@@ -18,7 +19,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static string getTextWithPrefix(string $text)
  * @method static SmsClientInterface setProvider(SmsProviderInterface $smsProvider)
  *
- * @see \Coolycow\LaravelSms\SmsClient
+ * @see SmsClient
  */
 class Sms extends Facade
 {
