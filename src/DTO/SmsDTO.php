@@ -2,18 +2,15 @@
 
 namespace Coolycow\LaravelSms\DTO;
 
-/**
- * Используется в SmsClientInterface (метод sendSmsDTO) и в SmsProviderInterface (метод sendSms).
- */
-class SmsDTO
+readonly class SmsDTO
 {
+    /**
+     * @param  array<string, mixed>  $params
+     */
     public function __construct(
         public string $phone,
         public string $text,
         public string $sender,
         public array $params = [],
-    )
-    {
-        //
-    }
+    ) {}
 }

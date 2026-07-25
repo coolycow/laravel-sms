@@ -2,81 +2,59 @@
 
 namespace Coolycow\LaravelSms\Exceptions;
 
-use Coolycow\LaravelSms\Contracts\SmsExceptionInterface;
 use Exception;
 
-class SmsException extends Exception implements SmsExceptionInterface
+class SmsException extends Exception
 {
-    /**
-     * @return static
-     */
-    public static function forEmptyAccessPoint(): static
+    public static function forEmptyAccessPoint(): self
     {
-        return new static('Empty access point');
+        return new self('Empty access point');
     }
 
-    /**
-     * @return static
-     */
-    public static function forEmptyApiLogin(): static
+    public static function forEmptyApiLogin(): self
     {
-        return new static('Empty api login');
+        return new self('Empty api login');
     }
 
-    /**
-     * @return static
-     */
-    public static function forEmptyApiPassword(): static
+    public static function forEmptyApiPassword(): self
     {
-        return new static('Empty api password');
+        return new self('Empty api password');
     }
 
-    /**
-     * @return static
-     */
-    public static function forEmptyResponse(): static
+    public static function forEmptyResponse(): self
     {
-        return new static('Empty response');
+        return new self('Empty response');
     }
 
-    /**
-     * @return static
-     */
-    public static function forCommunication(): static
+    public static function forCommunication(): self
     {
-        return new static('Communication error');
+        return new self('Communication error');
     }
 
-    /**
-     * @return static
-     */
-    public static function forEmptyPhone(): static
+    public static function forEmptyPhone(): self
     {
-        return new static('Empty phone');
+        return new self('Empty phone');
     }
 
-    /**
-     * @return static
-     */
-    public static function forEmptyText(): static
+    public static function forInvalidPhone(string $phone): self
     {
-        return new static('Empty text');
+        return new self("Invalid phone number: {$phone}");
     }
 
-    /**
-     * @return static
-     */
-    public static function forSendIsDisabled(): static
+    public static function forEmptyText(): self
     {
-        return new static('Send is disabled');
+        return new self('Empty text');
     }
 
-    /**
-     * @param  string  $errorMessage
-     * @return static
-     */
-    public static function forSend(string $errorMessage): static
+    public static function forMissingProvider(?string $provider = null): self
     {
-        return new static($errorMessage);
+        $suffix = $provider ? ": {$provider}" : '';
+
+        return new self("SMS provider is not configured{$suffix}");
+    }
+
+    public static function forSend(string $errorMessage): self
+    {
+        return new self($errorMessage);
     }
 }

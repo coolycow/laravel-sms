@@ -7,106 +7,65 @@ use Coolycow\LaravelSms\Enum\SmsStatusEnum;
 use Coolycow\LaravelSms\Exceptions\SmsException;
 
 /**
- * Данный интерфейс должны реализовывать все подключенные провайдеры SMS-сообщений.
+ * Application-side SMS gateway adapters must implement this interface.
  *
- * Для работы с реальной отправкой сообщения необходимо использовать интерфейс SmsClientInterface.
+ * Use SmsClientInterface for sending; do not call providers directly from app code.
  */
 interface SmsProviderInterface
 {
+    public const RESPONSE_ERROR_CODE = -1;
+
+    public const RESPONSE_ERROR_TEXT = 'Invalid provider response';
+
     /**
-     * Статический метод отправки СМС.
+     * @return array<string, mixed>
      *
-     * @param  SmsDTO  $dto
-     * @return array
      * @throws SmsException
      */
     public function sendSms(SmsDTO $dto): array;
 
     /**
-     * Статический метод запроса статуса сообщения.
+     * @return array<string, mixed>
      *
-     * @param  int  $id
-     * @return array
      * @throws SmsException
      */
     public function getStatus(int $id): array;
 
     /**
-     * Код ошибки запроса.
-     * Должен вернуть 0 в случае, если запрос прошел без ошибок.
-     * В случае ошибки должен вернуть цифровой код ошибки провайдера или же значение RESPONSE_ERROR_CODE.
+     * Return 0 when the send request succeeded.
+     * On failure return the provider error code or RESPONSE_ERROR_CODE.
      *
-     * @param  array  $response
-     * @return int
+     * @param  array<string, mixed>  $response
      */
     public function getErrorCodeFromResponse(array $response): int;
 
     /**
-     * Текст ошибки запроса.
-     * Должен вернуть текст ошибки провайдера или же значение RESPONSE_ERROR_TEXT.
-     *
-     * @param  array  $response
-     * @return string
+     * @param  array<string, mixed>  $response
      */
     public function getErrorTextFromResponse(array $response): string;
 
     /**
-     * ID сообщение у провайдера.
-     * Должен вернуть цифровой ID сообщение или же NULL.
+     * Map a failed send response to a package status.
      *
-     * @param  array  $response
-     * @return int|null
+     * @param  array<string, mixed>  $response
      */
-    public function getProviderIdFromResponse(array $response): int|null;
+    public function getStatusFromSendResponse(array $response): SmsStatusEnum;
 
     /**
-     * Цифровой статус сообщения из запроса статуса.
-     *
-     *
-     * @param  array  $response
-     * @return SmsStatusEnum
+     * @param  array<string, mixed>  $response
+     */
+    public function getProviderIdFromResponse(array $response): ?int;
+
+    /**
+     * @param  array<string, mixed>  $response
      */
     public function getStatusFromStatusResponse(array $response): SmsStatusEnum;
 
-    /**
-     * Статический метод запроса баланса.
-     *
-     * @return array|string
-     */
-    public function getBalance(): array|string;
+    public function getBalance(): float;
 
-    /**
-     * Баланс для виджета в админке. Не используется.
-     *
-     * @return string
-     */
-    public function getBalanceString(): string;
-
-    /**
-     * Возвращает баланс в виде суммы на счете провайдера.
-     *
-     * @return float
-     */
-    public function getBalanceFloat(): float;
-
-    /**
-     * Название провайдера.
-     *
-     * @return string
-     */
     public function getProviderName(): string;
 
-    /**
-     * Код провайдера.
-     *
-     * @return string
-     */
     public function getProviderCode(): string;
 
-    /**
-     * Ссылку на личный кабинет провайдера.
-     *
-     * @return string
-     */
     public function getPaymentUrl(): string;
 }

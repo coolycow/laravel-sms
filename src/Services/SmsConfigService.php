@@ -7,83 +7,46 @@ use Coolycow\LaravelSms\Contracts\SmsConfigInterface;
 class SmsConfigService implements SmsConfigInterface
 {
     /**
-     * @return float
-     */
-    private function getDefaultNormalBalance(): float
-    {
-        return 5000.00;
-    }
-
-    /**
-     * @return float
-     */
-    private function getDefaultMinimalBalance(): float
-    {
-        return 300.00;
-    }
-
-    /**
-     * @return string
-     */
-    private function getDefaultSender(): string
-    {
-        return 'Sender';
-    }
-
-    /**
-     * @return array
+     * {@inheritdoc}
      */
     public function getAvailableProviders(): array
     {
-        return config('sms.providers', []);
+        /** @var array<string, class-string> $providers */
+        $providers = config('sms.providers', []);
+
+        return $providers;
     }
 
-    /**
-     * Возвращает имя отправителя.
-     *
-     * @return string
-     */
+    public function getDefaultProvider(): ?string
+    {
+        $provider = config('sms.default_provider');
+
+        return $provider === null || $provider === '' ? null : (string) $provider;
+    }
+
     public function getSender(): string
     {
-        return trim(config('settings.sms_sender', $this->getDefaultSender()));
+        return trim((string) config('sms.sender', 'Sender'));
     }
 
-    /**
-     * Возвращает стандартную сумму, которая должна быть на счете провайдера.
-     *
-     * @return float
-     */
     public function getNormalBalance(): float
     {
-        return (float)config('settings.sms_normal_balance', $this->getDefaultNormalBalance());
+        return (float) config('sms.normal_balance', 5000.0);
     }
 
-    /**
-     * Возвращает минимальную сумму, которая должна быть на счете провайдера.
-     *
-     * @return float
-     */
     public function getMinimalBalance(): float
     {
-        return (float)config('settings.sms_minimal_balance', $this->getDefaultMinimalBalance());
+        return (float) config('sms.minimal_balance', 300.0);
     }
 
-    /**
-     * Нужно ли отправлять СМС.
-     *
-     * @return bool
-     */
     public function sendIsEnabled(): bool
     {
-        return (bool)config('settings.sms_send', false);
+        return (bool) config('sms.enabled', false);
     }
 
-    /**
-     * @return string
-     */
     public function getPrefix(): string
     {
-        $prefix = config('settings.sms_prefix', '');
+        $prefix = config('sms.prefix', '');
 
         return $prefix === null ? '' : (string) $prefix;
     }

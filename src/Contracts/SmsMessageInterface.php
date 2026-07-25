@@ -3,90 +3,55 @@
 namespace Coolycow\LaravelSms\Contracts;
 
 use Coolycow\LaravelSms\Enum\SmsStatusEnum;
-use Carbon\Carbon;
+use Illuminate\Support\Carbon;
 
 interface SmsMessageInterface
 {
     /**
-     * Создание сообщения.
-     *
-     * @return $this
+     * @param  array<string, mixed>  $params
      */
     public function createMessage(
-        int $phone,
+        string $phone,
         string $text,
         string $sender,
         string $providerCode,
         array $params = []
     ): static;
 
+    public function getPhone(): string;
+
+    public function getText(): string;
+
+    public function getSender(): string;
+
     /**
-     * Получить код провайдера.
-     *
-     * @return string
+     * @return array<string, mixed>
      */
+    public function getParams(): array;
+
     public function getProvider(): string;
 
-    /**
-     * Получить статус сообщения.
-     *
-     * @return SmsStatusEnum
-     */
     public function getStatus(): SmsStatusEnum;
 
-    /**
-     * Установка статуса сообщения.
-     *
-     * @param  SmsStatusEnum  $status
-     * @return $this
-     */
-    public function setStatus(SmsStatusEnum $status): static;
+    public function getStatusText(): string;
+
+    public function setStatus(SmsStatusEnum $status, ?string $statusText = null): static;
 
     /**
-     * Установить ответ провайдера.
-     *
-     * @param  array  $response
-     * @return $this
+     * @param  array<string, mixed>  $response
      */
     public function setResponse(array $response): static;
 
-    /**
-     * Получить ID сообщения на стороне провайдера.
-     *
-     * @return int|null
-     */
     public function getProviderId(): ?int;
 
-    /**
-     * Установить ID сообщения на стороне провайдера.
-     *
-     * @param  int|null  $providerId
-     * @return $this
-     */
-    public function setProviderId(int|null $providerId): static;
+    public function setProviderId(?int $providerId): static;
 
-    /**
-     * Устанавливает статус ошибки.
-     * Код ошибки будет установлен автоматически.
-     * Текст ошибки можно передать.
-     *
-     * @param  string  $errorMessage // Текст ошибки.
-     * @return $this
-     */
     public function setErrorStatus(string $errorMessage = ''): static;
 
     /**
-     * Сохранение сообщения.
-     *
-     * @param  array  $options
-     * @return bool
+     * @param  array<string, mixed>  $options
      */
     public function saveMessage(array $options = []): bool;
 
-    /**
-     * Получить дату создания сообщения в UTC.
-     *
-     * @return Carbon
-     */
     public function getCreatedAt(): Carbon;
 }
